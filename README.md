@@ -1,8 +1,7 @@
 # Interactive Tessellations
 
 Generative tessellations turned into living, playable **single-file SVGs**. All the
-motion is JavaScript embedded directly inside each `.svg` — no build step, no
-dependencies.
+motion is JavaScript embedded directly inside each `.svg` without dependencies.
 
 **▶ Live:** https://meefs.github.io/tessellations/
 
