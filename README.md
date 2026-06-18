@@ -4,7 +4,7 @@ Generative tessellations turned into living, playable **single-file SVGs**. All 
 motion is JavaScript embedded directly inside each `.svg` — no build step, no
 dependencies.
 
-**▶ Live:** https://meefs.github.io/tessellations/
+**▶ Live:** https://tessellation-svg.pages.dev/
 
 ## Pieces
 - `tessellation-1.svg` — *Verdant* (~2 MB, smooth)
