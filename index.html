@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Interactive Tessellations</title>
+<style>
+  :root{--bg:#14110d;--panel:#1d1913;--ink:#ede4d3;--muted:#a89b86;--line:#33291c;--gold:#ffd166}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:52px 24px 96px}
+  h1{font-size:clamp(28px,4vw,38px);margin:0 0 8px;letter-spacing:.5px}
+  .sub{color:var(--muted);margin:0 0 30px;max-width:64ch}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 42px}
+  .key{border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--panel);
+    font:13px/1 ui-monospace,Menlo,Consolas,monospace}
+  .key b{color:var(--gold);font-weight:600}
+  .grid{display:grid;grid-template-columns:1fr;gap:36px}
+  @media(min-width:820px){.grid{grid-template-columns:1fr 1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .frame{position:relative;aspect-ratio:1085/708;background:#ede4d3}
+  .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .poster{position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;
+    align-items:center;justify-content:center;background:#ede4d3;color:#3a2f1d;cursor:pointer}
+  .poster button{font:15px ui-sans-serif;padding:11px 18px;border-radius:10px;border:0;
+    background:#3a2f1d;color:#ede4d3;cursor:pointer}
+  .meta{padding:16px 18px 20px}
+  .meta h2{margin:0 0 4px;font-size:19px}
+  .meta p{margin:0 0 12px;color:var(--muted);font-size:14px}
+  .open{display:inline-block;color:var(--gold);text-decoration:none;font-weight:600;font-size:14px}
+  .open:hover{text-decoration:underline}
+  .tip{margin:38px 0 0;color:var(--muted);font-size:13px}
+  footer{margin-top:56px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Interactive Tessellations</h1>
+    <p class="sub">Generative tessellations turned into living, playable pieces. All the motion is
+      JavaScript embedded inside each <code>.svg</code> &mdash; no build step, no dependencies.
+      Best on a desktop browser: move the mouse, click to send ripples, and use the keyboard.</p>
+
+    <div class="legend">
+      <span class="key"><b>Space</b> mode</span>
+      <span class="key"><b>&minus; / +</b> power</span>
+      <span class="key"><b>[ / ]</b> speed</span>
+      <span class="key"><b>, / .</b> radius</span>
+      <span class="key"><b>C</b> palette</span>
+      <span class="key"><b>M</b> sound</span>
+      <span class="key"><b>G</b> glow</span>
+      <span class="key"><b>X</b> clear</span>
+      <span class="key"><b>H</b> hide UI</span>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="frame"><iframe src="tessellation-1.svg" title="Verdant" loading="lazy"></iframe></div>
+        <div class="meta">
+          <h2>Verdant</h2>
+          <p>~2&nbsp;MB &middot; smooth. Click the preview, then try Space and C.</p>
+          <a class="open" href="tessellation-1.svg" target="_blank" rel="noopener">Open fullscreen &#8599;</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="frame" id="f2">
+          <div class="poster" id="p2">
+            <div>Monochrome &middot; 24&nbsp;MB</div>
+            <button type="button">Load live preview</button>
+          </div>
+        </div>
+        <div class="meta">
+          <h2>Ink</h2>
+          <p>Heavier file &mdash; loads on click, or open it directly.</p>
+          <a class="open" href="tessellation-2.svg" target="_blank" rel="noopener">Open fullscreen &#8599;</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="tip">Tip: click a preview once to give it keyboard focus before using shortcuts.
+      Leave the mouse still for a few seconds and the piece drifts on its own.</p>
+
+    <footer>Single-file interactive SVGs. They run when opened as a page (like here) or on
+      GitHub&nbsp;Pages; GitHub&rsquo;s in-repo file viewer and <code>raw.&hellip;</code> links show them static.</footer>
+  </div>
+
+  <script>
+    document.getElementById('p2').addEventListener('click', function () {
+      document.getElementById('f2').innerHTML =
+        '<iframe src="tessellation-2.svg" title="Ink"></iframe>';
+    });
+  </script>
+</body>
+</html>
